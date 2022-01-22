@@ -9,8 +9,10 @@
 </head>
 
 <body>
+    <div id="example"></div>
     <h1>実験ページだよ</h1>
     <script src="{{ asset('js/hoge.js') }}"></script>
+    <script src="{{ mix('/js/app.js') }}"></script>
 </body>
 
 </html>

@@ -12,8 +12,6 @@ use App\Http\Controllers\ExperimentController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/experiment', 'ExperimentController@index')->name('experiment.index');
+Route::get('/{any}', function () {
+    return view('index');
+})->where('any', '.*');

@@ -1,4 +1,4 @@
-let mix = require('laravel-mix');
+let mix = require("laravel-mix");
 
 /*
  |--------------------------------------------------------------------------
@@ -11,5 +11,23 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+mix
+  .ts("resources/assets/ts/App.tsx", "public/js")
+  .react()
+  .sass("resources/assets/sass/app.scss", "public/css")
+  .browserSync({
+    files: [
+      "resources/**/*",
+      "resources/**/**/*",
+      "resources/**/**/**/*",
+      "config/**/*",
+      "routes/**/*",
+      "app/**/*",
+      "public/**/*",
+    ],
+    proxy: {
+      target: "http://localhost:80",
+    },
+  })
+  .disableSuccessNotifications()
+  .version();

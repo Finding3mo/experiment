@@ -12,7 +12,22 @@ let mix = require("laravel-mix");
  */
 
 mix
-  .ts("resources/assets/ts/app.ts", "public/js")
+  .ts("resources/assets/ts/App.tsx", "public/js")
   .react()
   .sass("resources/assets/sass/app.scss", "public/css")
+  .browserSync({
+    files: [
+      "resources/**/*",
+      "resources/**/**/*",
+      "resources/**/**/**/*",
+      "config/**/*",
+      "routes/**/*",
+      "app/**/*",
+      "public/**/*",
+    ],
+    proxy: {
+      target: "http://localhost:80",
+    },
+  })
+  .disableSuccessNotifications()
   .version();
